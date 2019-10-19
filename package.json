@@ -1,0 +1,32 @@
+{
+  "name": "hooks-todo-app",
+  "version": "1.0.0",
+  "description": "Example app for this post: https://itnext.io/making-a-beautiful-todo-app-using-react-hooks-material-ui-52dacf3245f4",
+  "keywords": [
+    "react",
+    "react-hooks",
+    "hooks"
+  ],
+  "main": "src/index.js",
+  "dependencies": {
+    "@material-ui/core": "3.3.2",
+    "@material-ui/icons": "latest",
+    "react": "16.7.0-alpha.0",
+    "react-dom": "16.7.0-alpha.0",
+    "react-qr-reader": "^2.2.1",
+    "react-scripts": "2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
