@@ -9,6 +9,14 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 import QrReader from "react-qr-reader";
 
+function getQueryValue(location, name) {
+  var testedName = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+  var regex = new RegExp("[\\?&]" + testedName + "=([^&#]*)");
+  var results = regex.exec(location.search);
+
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
 const QrScan = () => {
   const [resultScanner, setResultScanner] = useState("");
   const [resultScannerDate, setResultScannerDate] = useState("");
@@ -61,7 +69,7 @@ const QrScan = () => {
     handleShowProgress()
     // const url = "https://script.google.com/macros/s/AKfycbyBIdsfOcqLtB-MoL8BvE5d65q43nrJzYk-boK2Iw/exec?action=insert&tableName=KKP&name=ihsan%20Insom&waktuDatang=Selasa"
     const url = "https://script.google.com/macros/s/AKfycbyBIdsfOcqLtB-MoL8BvE5d65q43nrJzYk-boK2Iw/exec?action=insert"
-    const tableNme = "KKP";
+    const tableNme = getQueryValue(window.location, "eventName") || "KKP";
     const name = resultScanner
     const waktuDatang = resultScannerDate
     const finalUrl = encodeURI(`${url}&tableName=${tableNme}&name=${name}&waktuDatang=${waktuDatang}`)
