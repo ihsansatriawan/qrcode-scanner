@@ -63,13 +63,15 @@ const QrScan = () => {
     }
   }
 
+  const getEventName = () => (getQueryValue(window.location, "eventName") || "KKP")
+
   const handleSubmit = () => {
     console.log("resultScanner: ", resultScanner)
     console.log("resultScannerDate: ", resultScannerDate)
     handleShowProgress()
     // const url = "https://script.google.com/macros/s/AKfycbyBIdsfOcqLtB-MoL8BvE5d65q43nrJzYk-boK2Iw/exec?action=insert&tableName=KKP&name=ihsan%20Insom&waktuDatang=Selasa"
     const url = "https://script.google.com/macros/s/AKfycbyBIdsfOcqLtB-MoL8BvE5d65q43nrJzYk-boK2Iw/exec?action=insert"
-    const tableNme = getQueryValue(window.location, "eventName") || "KKP";
+    const tableNme = getEventName();
     const name = resultScanner
     const waktuDatang = resultScannerDate
     const finalUrl = encodeURI(`${url}&tableName=${tableNme}&name=${name}&waktuDatang=${waktuDatang}`)
@@ -94,6 +96,7 @@ const QrScan = () => {
   }
 
   return <Paper style={{ margin: 16, padding: 16 }}>
+    <h1>Scan Peserta {getEventName()}</h1>
     <Snackbar
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       key={'top,center'}
